@@ -1,3 +1,4 @@
+AAA_FIRST,1,1.00,0.50,false,100
 26inTube,1234567891,7.00,5.58,true,35
 10spFrontDerailuer,1234567897,41.00,31.50,true,10
 seatPost,1234567892,17.00,1.23,true,5
@@ -21,3 +22,4 @@ zarminComputer,1234567908,543.21,480.00,false,2
 womensBibsMedium,1234567909,110.00,99.00,false,4
 womensJacketMedium,1234567911,120.00,95.00,false,4
 mensJacketMedium,1234567910,120.00,95.00,false,4
+ZZZ_Last,999999999,6.00,3.00,true,100
