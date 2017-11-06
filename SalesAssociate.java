@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SalesAssociate extends Employee {
-    private  ArrayList<BikePart> van = new ArrayList<>();
+    private ArrayList<BikePart> van = new ArrayList<>();
     private Invoice thisInvoice = new Invoice(super.getFirstName());
 
     /**
@@ -13,7 +13,6 @@ public class SalesAssociate extends Employee {
      * This Should Sell your part by name or number
      * Should update the van, and add to a file that is already created with todays date
      */
-    //todo make it so that the sell actually decrements by the correct amount
     //todo make Sell work with files?
     void Sell(String partName, int partNumber, int quantity) {
         double cost = 0.0;
@@ -29,12 +28,10 @@ public class SalesAssociate extends Employee {
                         System.out.println("please put in a more reasonable amount you have " + g + " parts of the part " + van.get(i).getName() + " you can sell by number");
                     } else {
                         int a = g - quantity;
-                        System.out.println(a + " quantity at time of doing things by number");
                         van.get(i).setQuantity(a);
-                        System.out.println(van.get(i).getQuantity() + " Quantity after setting it by number");
                         cost += ((van.get(i).getPrice()) * quantity);
                         thisInvoice.addCost(cost);
-                        BikePart invoice = new BikePart(van.get(i).getName(),van.get(i).getNumber(),van.get(i).getTruePrice(),van.get(i).getSale(),van.get(i).getonSale(),quantity);
+                        BikePart invoice = new BikePart(van.get(i).getName(), van.get(i).getNumber(), van.get(i).getTruePrice(), van.get(i).getSale(), van.get(i).getonSale(), quantity);
                         //invoice.setQuantity(quantity);
                         thisInvoice.add(invoice);
                     }
@@ -52,20 +49,18 @@ public class SalesAssociate extends Employee {
                         System.out.println("please put in a more reasonable amount you have " + g + " of the part " + van.get(i).getName() + " can sell by name");
                     } else {
                         int a = g - quantity;
-                            System.out.println(a + " quantity at time of doing things by name");
                         van.get(i).setQuantity(a);
-                          System.out.println(van.get(i).getQuantity() + " Quantity after setting it by name");
                         cost += (van.get(i).getPrice() * quantity);
                         thisInvoice.addCost(cost);
-                        BikePart invoice = new BikePart(van.get(i).getName(),van.get(i).getNumber(),van.get(i).getTruePrice(),van.get(i).getSale(),van.get(i).getonSale(),quantity);                        //invoice.setQuantity(quantity);
+                        BikePart invoice = new BikePart(van.get(i).getName(), van.get(i).getNumber(), van.get(i).getTruePrice(), van.get(i).getSale(), van.get(i).getonSale(), quantity);                        //invoice.setQuantity(quantity);
                         thisInvoice.add(invoice);
 
                     }
                 }
             }
         }
-        System.out.println(thisInvoice.getCost() + "the invoices total cost at the end of sell");
-        System.out.println(van.get(0).toString() + " van sub 0");
+        //    System.out.println(thisInvoice.getCost() + "the invoices total cost at the end of sell");
+        //  System.out.println(van.get(0).toString() + " van sub 0");
         writeToFile(van);
     }
 
@@ -156,8 +151,9 @@ public class SalesAssociate extends Employee {
             PrintWriter writer = new PrintWriter(new FileWriter(super.getFirstName() + ".txt"));
             for (BikePart h : db) {
                 writer.println(h.toString());
-                if(h.getNumber()==1)
-                System.out.println(h.toString()+" this is the writetoFIle output");
+                if (h.getNumber() == 1) {
+                    //  System.out.println(h.toString() + " this is the writetoFIle output");
+                }
             }
             writer.close();
 
