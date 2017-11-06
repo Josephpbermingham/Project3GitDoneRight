@@ -1,62 +1,53 @@
 package Project3GitDoneRight;
+
 public class Employee {
-    private String userType;
-    private String phoneNumber;
+    private String firstName;
+    private String lastName;
     private String username;
     private String password;
     private String email;
 
 
-
-
-    public String getUserType() {
-        return userType;
+    String getFirstName() {
+        return firstName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    String getLastName() {
+        return lastName;
     }
 
-    public String getUsername() {
+    String getUsername() {
         return username;
     }
 
-
-    public void setPassword(String pass){
-        this.password = pass;
-    }
-
-    public String getPassword(boolean a) {
+    String getPassword(boolean a) {
         if (a)
             return password;
         else
             return "";
     }
 
-    public String getEmail() {
+    String getEmail() {
         return email;
     }
 
+    void setPassword(String password) {
+        this.password = password;
+    }
 
-    public Employee(String uType, String pNum,  String Email, String uName, String Pword) {
-        this.userType = uType;
-        this.phoneNumber = pNum;
+    public Employee(String fName, String lName, String uName, String Pword, String Email) {
+        this.firstName = fName;
+        this.lastName = lName;
         this.username = uName;
         this.password = Pword;
         this.email = Email;
     }
 
     public Employee() {
-        this.userType = "SysAdmin";
-        this.phoneNumber = "4341234444";
-        this.email = "J@J.com";
-        this.username = "JohnSmith";
+        this.firstName = "John";
+        this.lastName = "doe";
+        this.username = "SysAdmin";
         this.password = "A";
-    }
-
-    @Override
-    public String toString(){
-        return userType + "," + phoneNumber+ "," + email +","+ username+"," + password;
+        this.email = "J@J.com";
     }
 }
-

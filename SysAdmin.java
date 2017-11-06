@@ -2,6 +2,7 @@ package Project3GitDoneRight;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ import java.util.Scanner;
  *
  * @author zachcaton
  */
-public class SysAdmin extends Employee{
+class SysAdmin extends Employee{
 
 
     private ArrayList<Employee> users = new ArrayList<>();
@@ -23,9 +24,8 @@ public class SysAdmin extends Employee{
      * @param email this users email
      * @param userName this users username
      * @param password this users unencrypted password
-     * @throws FileNotFoundException
      */
-    public void addUser(String userType, String phoneNumber, String email, String userName, String password) throws FileNotFoundException{
+     void addUser(String userType, String phoneNumber, String email, String userName, String password){
 
         //creating an employee from text fields
         String [] user = new String[5];
@@ -36,11 +36,15 @@ public class SysAdmin extends Employee{
         user[4] = password;
         Employee em = new Employee(user[0], user[1], user[2], user[3], user[4]);
 
-        //checks to see if users is empty, if it is then itll read in users fro file
-        if (users.isEmpty() == true){
-
-            Scanner inVF = new Scanner(f);
-            //adds users back into program
+        //checks to see if users is empty, if it is then it will read in users from the file
+        Scanner inVF=null;
+        if (users.isEmpty()){
+            try {
+                inVF = new Scanner(f);
+            }catch(FileNotFoundException e) {
+                System.out.println("File Not Found in sysAdmin addUser, Please consult the Author");
+            }
+           //adds users back into program
             while(inVF.hasNext()){
                 String line = inVF.nextLine();
                 String [] pA = line.split(",");
@@ -61,26 +65,32 @@ public class SysAdmin extends Employee{
         }
         //after everything is complete it writes the users back into the file
         f = new File(fileName);
-        try (PrintWriter p = new PrintWriter(f)) {
+        try{
+            PrintWriter p = new PrintWriter(f);
             for(Employee usr: users){
                 p.println(usr.toString());
             }
+        }catch(FileNotFoundException e){
+            System.out.println("File not Found exception in the end of SysAdmin.addUser");
         }
 
     }
 
     /**
      * Deletes user by his/her username
-     * @param username
-     * @throws FileNotFoundException
+     * @param username The UserName of the user that you are deleting
      */
-    public void deleteUser(String username) throws FileNotFoundException{
+    void deleteUser(String username){
         //read from user.txt
         //then compare names and delete the correct one
+        Scanner inVF=null;
         f = new File(fileName);
-        if(users.isEmpty() == true){
-
-            Scanner inVF = new Scanner(f);
+        if (users.isEmpty()){
+            try {
+                inVF = new Scanner(f);
+            }catch(FileNotFoundException e) {
+                System.out.println("File Not Found in sysAdmin addUser, Please consult the Author");
+            }
 
             while(inVF.hasNext()){
                 String line = inVF.nextLine();
@@ -94,10 +104,13 @@ public class SysAdmin extends Employee{
                 }
             }
             //File f = new File(fileName);
-            try (PrintWriter p = new PrintWriter(f)) {
+            try {
+                PrintWriter p = new PrintWriter(f);
                 for(Employee usr: users){
-                    p.println(usr.toString());
-                }
+                        p.println(usr.toString());
+                    }
+                }catch(FileNotFoundException e){
+                System.out.println("File not found in SysAdmin Remove user");
             }
         }else{
             for(int i=0; i< users.size(); i++){
@@ -106,19 +119,23 @@ public class SysAdmin extends Employee{
                 }
             }
             //File f = new File(fileName);
-            try (PrintWriter p = new PrintWriter(f)) {
+            try {
+                    PrintWriter p = new PrintWriter(f);//todo make sure that this doesnt need to append
                 for(Employee usr: users){
                     p.println(usr.toString());
                 }
+            }catch(FileNotFoundException e){
+                System.out.println("File not found in the end of SysAdmin Remove user");
             }
         }
 
     }
     /**
      * Resets password by user name
-     * @param name
-     * @param newPass
-     * @throws FileNotFoundException
+     * @author Zach Caton
+     * @param name username of the user whose password you are changing
+     * @param newPass the new password that you want to add
+     * @throws FileNotFoundException Throws when the file of users is not found
      */
     public void resetPassword(String name, String newPass) throws FileNotFoundException{
 

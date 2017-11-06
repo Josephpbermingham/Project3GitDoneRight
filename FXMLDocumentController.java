@@ -22,44 +22,57 @@ public class FXMLDocumentController implements Initializable {
     private SalesAssociate steve;
     @FXML
     private TextField partInfo;
-
     @FXML
     private TextField testbpDS;
-
     @FXML
     private TextField Username;
-
     @FXML
     private TextField Password;
-
     @FXML
     private TextArea display;
-
     @FXML
     private Button changescene;
-
     @FXML
     private Button Login;
-
     @FXML
     private Button Return;
     @FXML
     private Button rt;
-
     @FXML
     private TextField PartName;
-
     @FXML
     private TextField PartNumber;
-
     @FXML
     private TextField LoadFileName;
-
     @FXML
     private TextField Quantity;
-
     @FXML
     private Button logOut;
+    @FXML
+    private Button createAccountButton;
+    @FXML
+    private TextField userTypeTextField;
+
+    @FXML
+    private TextField passwordTextField;
+
+    @FXML
+    private TextField usernameTextField;
+
+    @FXML
+    private TextField emailTextField;
+
+    @FXML
+    private TextField phoneNumberTextField;
+
+    @FXML
+    private TextField deleteUserTextField;
+
+    @FXML
+    private TextField resetUserTextField;
+
+    @FXML
+    private TextField resetPasswordTextField;
 
     /**
      * This is the handler for the sales associate sell function
@@ -155,6 +168,43 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * @author Zach Canton
+     * @param event the button is clicked
+     */
+    @FXML
+    void createAccountButton(ActionEvent event) {
+        SysAdmin sysAdmin = new SysAdmin();
+        String userType = userTypeTextField.getText();
+        String pass = passwordTextField.getText();
+        String username = usernameTextField.getText();
+        String email = emailTextField.getText();
+        String phoneNum = phoneNumberTextField.getText();
+
+        sysAdmin.addUser(userType, phoneNum, email, username, pass);
+
+        //SysAdmin.addUser(userType, phoneNum, email, username, pass);
+    }
+
+    /**
+     * This should be the button that delets an accoutn that you add
+     * @author zach caton
+     * @param event when the button is clicked
+     */
+    @FXML
+    void deleteAccountButton(ActionEvent event){
+        String usernameDelete = deleteUserTextField.getText();
+        SysAdmin delAdmin = new SysAdmin();
+        delAdmin.deleteUser(usernameDelete);
+    }
+
+    @FXML
+    void resetPasswordButton(ActionEvent event) throws FileNotFoundException{
+        String usernameReset = resetUserTextField.getText();
+        String passwordReset = resetPasswordTextField.getText();
+        SysAdmin resAdmin = new SysAdmin();
+        resAdmin.resetPassword(usernameReset, passwordReset);
+    }
+    /**
      * findByName compares all BikeParts in the warehouse data set and returns a BikePart if its name is equal to the name given.
      *
      * @param name The name of the part you are trying to find
@@ -171,9 +221,9 @@ public class FXMLDocumentController implements Initializable {
      * readBPDS reads in the initial warehouse data set from a file given by the user.
      * It also displays all BikeParts in the warehouse and denotes what each value is.
      *
-     * @param event
-     * @throws FileNotFoundException
-     * @throws IOException
+     * @param event on button press
+     * @throws FileNotFoundException not sure why alll of the methods throw some thing
+     * @throws IOException i want to talk about why we do this. i can see it as really smart or not at all smart
      */
     @FXML
     private void testBPDS(ActionEvent event) throws IOException {
@@ -241,7 +291,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * exits the program on click
-     * @param event
+     * @param event on button press
      */
     @FXML
     public void Quit(ActionEvent event) {
