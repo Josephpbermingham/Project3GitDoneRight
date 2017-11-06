@@ -61,6 +61,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button logOut;
 
+    /**
+     * This is the handler for the sales associate sell function
+     * @param event the button click
+     * @throws Exception any number of exceptions could be thrown here
+     */
     @FXML
     void Sell(ActionEvent event) throws Exception {
         steve = new SalesAssociate("a", "b", "c", "d", "email");
@@ -79,18 +84,30 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * This is the handler for the sales associate adding something to their van
+     * @param event the button being clicked
+     */
     @FXML
     void LoadFIle(ActionEvent event) {
         System.out.println("load");
+        //todo
     }
 
+    /**
+     * This is the handler for the print invoive command. it only needs to call invoice.close on the Sales associate you want an invoice from
+     * @param event
+     */
     @FXML
     void PrintInvoice(ActionEvent event) {
         System.out.println("prnt");
     }
 
-    private ArrayList<BikePart> bpDS = new ArrayList<>();
 
+    /**
+     * This is how the fxml changes scenes. (Needs better description
+     */
+    private ArrayList<BikePart> bpDS = new ArrayList<>();
     @FXML
     private void changeScene(ActionEvent event) throws IOException {
         Stage stage = null;
@@ -109,6 +126,12 @@ public class FXMLDocumentController implements Initializable {
         stage.show();
     }
 
+    /**
+     * THis is the action that occurs when you click the logon button
+     * @param event the click
+     * @throws IOException
+     * //todo give it the ability to look through a list of logged on individuals to check for a valid user
+     */
     @FXML
     private void loginButton(ActionEvent event) throws IOException {
         Stage stage = null;
@@ -200,6 +223,11 @@ public class FXMLDocumentController implements Initializable {
             }
     }
 
+    /**
+     * this method goes through the bike part warehouse and looks for parts with less than a hardcoded quantity (10)
+     * @param event
+     * //todo add the ability to create a file of the needed parts
+     */
     @FXML
     public void checkQuant(ActionEvent event) {
 
@@ -211,6 +239,10 @@ public class FXMLDocumentController implements Initializable {
             }
     }
 
+    /**
+     * exits the program on click
+     * @param event
+     */
     @FXML
     public void Quit(ActionEvent event) {
         System.exit(1);
@@ -218,7 +250,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // TODO i dont know what this needs to do
     }
 
 }
