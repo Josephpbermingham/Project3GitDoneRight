@@ -149,7 +149,7 @@ public class FXMLDocumentController implements Initializable {
     private void loginButton(ActionEvent event) throws IOException {
         Stage stage = null;
         Parent root = null;
-
+//todo make this actually look through a list of users. i would do it but i am sure that sys admin does it already and i dont want to goon that up
         if (event.getSource() == Login && Username.getText().equals("officeman") && Password.getText().equals("pass")) {
             //get reference to the button's stage
             stage = (Stage) Login.getScene().getWindow();
@@ -159,9 +159,14 @@ public class FXMLDocumentController implements Initializable {
             stage = (Stage) Login.getScene().getWindow();
             //load up OTHER FXML document
             root = FXMLLoader.load(getClass().getResource("SalesAssociate.fxml"));
+        }
+        else if(event.getSource() == Login && Username.getText().equals("d") && Password.getText().equals("d")){
+            stage = (Stage) Login.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("SysAdmin.fxml"));
         } else
             System.out.print("Error loading fxml");
         //create a new scene with root and set the stage
+        //todo make sure that we check for a scene before we try and load it to prevent a nullpointer exception
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
