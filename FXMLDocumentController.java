@@ -53,28 +53,24 @@ public class FXMLDocumentController implements Initializable {
     private Button createAccountButton;
     @FXML
     private TextField userTypeTextField;
-
     @FXML
     private TextField passwordTextField;
-
     @FXML
     private TextField usernameTextField;
-
     @FXML
     private TextField emailTextField;
-
     @FXML
     private TextField phoneNumberTextField;
-
     @FXML
     private TextField deleteUserTextField;
-
     @FXML
     private TextField resetUserTextField;
-
     @FXML
     private TextField resetPasswordTextField;
-
+    //todo move methods to their respective classes. so that the controller isnt a giant monster of a class
+    //This Employee is used to store the currently logged in employee
+    private Employee usersName;//todo implement this so that we can reference individual employees from a list
+    private ArrayList<BikePart> bpDS = new ArrayList<>();
     /**
      * This is the handler for the sales associate sell function
      *
@@ -104,28 +100,30 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     void LoadFIle(ActionEvent event) {
-        System.out.println("load");
-        //todo
+
+        //todo create a salse associate such that i can access the correct one in this method
+        SalesAssociate hardcoded = new SalesAssociate("default", "error", "error", "ShouldntBeUsingThis", "really now. please stop");
     }
 
     /**
-     * This is the handler for the print invoive command. it only needs to call invoice.close on the Sales associate you want an invoice from
+     * This is the handler for the print invoice command. it only needs to call invoice.close on the Sales associate you want an invoice from
      *
      * @param event on button press
      */
+
     @FXML
     void PrintInvoice(ActionEvent event) {
-        System.out.println("prnt");
+        //needs to be able to reference a Sales associate. a capability we don't currently have
     }
 
 
     /**
-     * This is how the fxml changes scenes. (Needs better description
+     * @author Josh Butler
+     * This is how the fxml changes scenes from any user with a return button back to the login screen
      */
-    private ArrayList<BikePart> bpDS = new ArrayList<>();
-
     @FXML
     private void changeScene(ActionEvent event) throws IOException {
+        usersName = null;//should reset
         Stage stage = null;
         Parent root = null;
         if (event.getSource() == Return) {
@@ -141,23 +139,25 @@ public class FXMLDocumentController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Null pointer exception in line 145 of controller");
         }
-        }
+    }
 
     /**
      * THis is the action that occurs when you click the logon button
      *
      * @param event the click
-     * @throws IOException //todo give it the ability to look through a list of logged on individuals to check for a valid user
+     * @throws IOException When there is an io exception
      * @author Josh Butler
+     * todo give it the ability to look through a list of logged on individuals to check for a valid user
      */
     @FXML
     private void loginButton(ActionEvent event) throws IOException {
         Stage stage = null;
         Parent root = null;
-//todo make this actually look through a list of users. i would do it but i am sure that sys admin does it already and i dont want to goon that up
+        //todo make this actually look through a list of users. needs to be System admin compliant
+        //todo have these actually create a user and set the employee field to themselves so we can access it
         if (event.getSource() == Login && Username.getText().equals("officeman") && Password.getText().equals("pass")) {
             //get reference to the button's stage
             stage = (Stage) Login.getScene().getWindow();
@@ -173,15 +173,15 @@ public class FXMLDocumentController implements Initializable {
         } else
             System.out.print("Error loading fxml");
         //create a new scene with root and set the stage
-        //todo make sure that we check for a scene before we try and load it to prevent a nullpointer exception
-       try {
-           Scene scene = new Scene(root);
-           stage.setScene(scene);
-           stage.show();
-       }catch(NullPointerException e){
-           System.out.println("no user by that name found");
-       }
-       }
+        //todo make sure that we check for a scene before we try and load it to prevent a null pointer exception
+        try {
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (NullPointerException e) {
+            System.out.println("no user by that name found");
+        }
+    }
 
     /**
      * @param event the button is clicked
@@ -202,7 +202,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This should be the button that delets an account that you have already added
+     * This should be the button that deletes an account that you have already added
      *
      * @param event when the button is clicked
      * @author zach caton
@@ -248,7 +248,6 @@ public class FXMLDocumentController implements Initializable {
     /**
      * readBPDS reads in the initial warehouse data set from a file given by the user.
      * It also displays all BikeParts in the warehouse and denotes what each value is.
-     *
      * @param event on button press
      * @throws FileNotFoundException not sure why alll of the methods throw some thing
      * @throws IOException           i want to talk about why we do this. i can see it as really smart or not at all smart
@@ -284,8 +283,8 @@ public class FXMLDocumentController implements Initializable {
 
 
     /**
+     * @author Josh Butler
      * Displays a specific BikePart by comparing user input to BikePart names.
-     *
      * @param event on button press
      */
     @FXML
@@ -302,8 +301,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * @author Josh Butler
      * this method goes through the bike part warehouse and looks for parts with less than a hardcoded quantity (10)
-     *
      * @param event //todo addInv the ability to create a file of the needed parts
      */
     @FXML
@@ -318,19 +317,17 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * @author Josh Butler
      * exits the program on click
-     *
      * @param event on button press
      */
     @FXML
     public void Quit(ActionEvent event) {
         System.exit(1);
     }
-
+//todo not sure what this does
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO i don't know what this needs to do
     }
-
 }
-
