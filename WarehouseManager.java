@@ -22,13 +22,13 @@ public class WarehouseManager extends Employee {
 
     /**
      * @param fileName The name of the file you want added to warehousedb.txt. MUST HAVE .TXT on the end
-     *                 State: untested, pulls file that you want to add, but DOES NOT add that to the warehouse
+     *                 State: untested, pulls file that you want to addInv, but DOES NOT addInv that to the warehouse
      */
     public void addfile(String fileName) {
         try {
             in = new Scanner(new File(fileName));
         } catch (FileNotFoundException e) {
-            System.out.println("File Not Found Exception on line 30 of Warehouse Manager \n the file you are trying to add does not exist or can not be found make sure you add .txt at the end");
+            System.out.println("File Not Found Exception on line 30 of Warehouse Manager \n the file you are trying to addInv does not exist or can not be found make sure you addInv .txt at the end");
         }
 
             ArrayList<BikePart> addList = new ArrayList<>();
@@ -43,7 +43,7 @@ public class WarehouseManager extends Employee {
                 System.out.println(partString + "This is tester output in Warehouse Manager LoadFile Method");
             }
             /*
-             * The idea here is to take in the array list of parts to be added, add them to the arraylist of things already there combining the ones that are the same and adding the new ones,
+             * The idea here is to take in the array list of parts to be added, addInv them to the arraylist of things already there combining the ones that are the same and adding the new ones,
              * and updating the information as needed
              */
             ArrayList<BikePart> warehouse = this.moveToList();

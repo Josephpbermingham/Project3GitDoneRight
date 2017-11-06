@@ -1,22 +1,33 @@
 package Project3GitDoneRight;
 
+import java.util.ArrayList;
+
 public class SalesAsscTester {
-    static SalesAssociate bob;
+    private static SalesAssociate bob;
 
     public static void main(String[] args) {
 
         bob = new SalesAssociate("Bob", "Brinkle", "bbrinkle", "t", "email");
         sellstuff();
         //addstuff();
+        invoicing();
     }
 
-    public static void sellstuff() {
+    private static void sellstuff() {
         // todo look at the sell and invoicing methods
-        bob.Sell("", 1, 1);
+        bob.Sell("", 1, 10);
         bob.Sell("AAA_FIRST", -1, 1);
+        bob.Sell("10spFrontDerailuer",-1,2);
+        bob.Sell("spdPedals",-1,3);
+        bob.Sell("",1234567910,4);
     }
 
-    public static void addstuff() {
+    private static void addstuff() {
         bob.LoadFile("initialInv.txt");
+    }
+    private static void invoicing(){
+        ArrayList<Object> a = bob.closeinvoice("marko");
+
+        System.out.println(a.get(0).toString());
     }
 }

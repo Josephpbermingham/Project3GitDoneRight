@@ -11,7 +11,7 @@ public class SalesAssociate extends Employee {
     /**
      * @author Joseph Bermingham
      * This Should Sell your part by name or number
-     * Should update the van, and add to a file that is already created with todays date
+     * Should update the van, and addInv to a file that is already created with todays date
      */
     //todo make Sell work with files?
     void Sell(String partName, int partNumber, int quantity) {
@@ -33,7 +33,7 @@ public class SalesAssociate extends Employee {
                         thisInvoice.addCost(cost);
                         BikePart invoice = new BikePart(van.get(i).getName(), van.get(i).getNumber(), van.get(i).getTruePrice(), van.get(i).getSale(), van.get(i).getonSale(), quantity);
                         //invoice.setQuantity(quantity);
-                        thisInvoice.add(invoice);
+                        thisInvoice.addInv(invoice);
                     }
                 }
             }
@@ -53,7 +53,7 @@ public class SalesAssociate extends Employee {
                         cost += (van.get(i).getPrice() * quantity);
                         thisInvoice.addCost(cost);
                         BikePart invoice = new BikePart(van.get(i).getName(), van.get(i).getNumber(), van.get(i).getTruePrice(), van.get(i).getSale(), van.get(i).getonSale(), quantity);                        //invoice.setQuantity(quantity);
-                        thisInvoice.add(invoice);
+                        thisInvoice.addInv(invoice);
 
                     }
                 }
@@ -66,10 +66,10 @@ public class SalesAssociate extends Employee {
 
     /**
      * @author Joseph Bermingham
-     * when you enter this method it gets the text from the text field and Adds the contents of a file to add to this sales associate van
+     * when you enter this method it gets the text from the text field and Adds the contents of a file to addInv to this sales associate van
      */
 
-    public void LoadFile(String fileName) {
+     void LoadFile(String fileName) {
         File loadFile = new File(fileName);
         try {
             //  System.out.println("Try has been entered");
@@ -77,7 +77,7 @@ public class SalesAssociate extends Employee {
             ArrayList<BikePart> addList = new ArrayList<>();
             this.moveToList();
             // System.out.println(check.get(0).toString());
-            //while there are parts in to be added break them up and add them to an arraylist of bike parts
+            //while there are parts in to be added break them up and addInv them to an arraylist of bike parts
             while (input.hasNext()) {
                 String partString = input.nextLine();
                 String[] broken = partString.split(",");
@@ -144,16 +144,13 @@ public class SalesAssociate extends Employee {
     /**
      * a utility class that adds an arraylist to the users file
      *
-     * @param db The arraylist of bikeparts you want to add to the van
+     * @param db The arraylist of bikeparts you want to addInv to the van
      */
     private void writeToFile(ArrayList<BikePart> db) {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(super.getFirstName() + ".txt"));
             for (BikePart h : db) {
                 writer.println(h.toString());
-                if (h.getNumber() == 1) {
-                    //  System.out.println(h.toString() + " this is the writetoFIle output");
-                }
             }
             writer.close();
 
@@ -165,7 +162,7 @@ public class SalesAssociate extends Employee {
     /*
      * this is a tester method for invoice
      */
-    public ArrayList<Object> closeinvoice(String name) {
+     ArrayList<Object> closeinvoice(String name) {
        return thisInvoice.close(name);
     }
 
@@ -179,7 +176,7 @@ public class SalesAssociate extends Employee {
      * creates a sales associate and their invoice
      * pretty sure that the writer in here needs to not append
      */
-    public SalesAssociate(String fName, String lName, String uName, String Pword, String Email) {
+     SalesAssociate(String fName, String lName, String uName, String Pword, String Email) {
         super(fName, lName, uName, Pword, Email);
         Invoice thisInvoice = new Invoice(fName);
     }

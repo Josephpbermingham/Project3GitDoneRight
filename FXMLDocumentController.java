@@ -96,7 +96,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * This is the handler for the print invoive command. it only needs to call invoice.close on the Sales associate you want an invoice from
-     * @param event
+     * @param event on button press
      */
     @FXML
     void PrintInvoice(ActionEvent event) {
@@ -157,7 +157,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * findByName compares all BikeParts in the warehouse data set and returns a BikePart if its name is equal to the name given.
      *
-     * @param name
+     * @param name The name of the part you are trying to find
      * @return returns BikePart b
      */
     private BikePart findByName(String name) {
@@ -176,7 +176,7 @@ public class FXMLDocumentController implements Initializable {
      * @throws IOException
      */
     @FXML
-    private void testBPDS(ActionEvent event) throws FileNotFoundException, IOException {
+    private void testBPDS(ActionEvent event) throws IOException {
         String s = testbpDS.getText();
         File f = new File(s);
         try (BufferedReader reader = new BufferedReader(new FileReader(f))) { //reads the file given by the user in the first textfield
@@ -208,7 +208,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Displays a specific BikePart by comparing user input to BikePart names.
      *
-     * @param event
+     * @param event on button press
      */
     @FXML
     public void examineButtonMethod(ActionEvent event) {
@@ -216,7 +216,7 @@ public class FXMLDocumentController implements Initializable {
 
         for (BikePart bp : bpDS)
             if (bp.getName().equals(s)) {
-                if (bp.getonSale() == true)
+                if (bp.getonSale())
                     display.appendText("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getSale() + "," + " Quantity: " + bp.getQuantity() + "\n");
                 else
                     display.appendText("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getPrice() + "," + " Quantity: " + bp.getQuantity() + "\n");
@@ -226,7 +226,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * this method goes through the bike part warehouse and looks for parts with less than a hardcoded quantity (10)
      * @param event
-     * //todo add the ability to create a file of the needed parts
+     * //todo addInv the ability to create a file of the needed parts
      */
     @FXML
     public void checkQuant(ActionEvent event) {
