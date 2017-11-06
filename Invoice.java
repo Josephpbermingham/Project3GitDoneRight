@@ -16,6 +16,10 @@ public class Invoice {
     private boolean created = false;
     private double cost = 0.0;
 
+    public double getCost() {
+        return cost;
+    }
+
     /**
      * @author Joseph Bermingham
      * @param asscName Name of the associate creating the invoice
@@ -43,11 +47,14 @@ public class Invoice {
     public void add(BikePart Part) {
         if (created) {
             invoiceList.add(Part);
-            cost += Part.getPrice();
+            invoice.println(Part);
         } else {
-            System.out.println("No invoice has been started for this user. Please Contact the Coders who gooned this up");
+            System.out.println("No invoice has been started for this user. Please Contact the Coders who messed this up");
         }
 
+    }
+    public void addCost(double add){
+        cost+=add;
     }
 
     /**
@@ -58,7 +65,7 @@ public class Invoice {
      */
     public ArrayList<Object> close(String name) {
         for (BikePart a : invoiceList) {
-            invoice.println(a);
+
         }
         invoice.println("Parts Purchased by " + name + " for $" + cost + "\n");
         invoice.close();
