@@ -1,8 +1,7 @@
 package Project3GitDoneRight;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -75,7 +74,6 @@ public class SalesAssociate extends Employee {
     /**
      * when you enter this method it gets the text from the text field and Adds the contents of a file to add to this sales associate van
      */
-    @FXML
     void LoadFile(String fileName) {
         System.out.println("SalesAssociate.LoadFile has been entered");
         File loadFile = new File(fileName);
@@ -85,7 +83,6 @@ public class SalesAssociate extends Employee {
             ArrayList<String> addList = new ArrayList<>();
             while (in.hasNext()) {
                 String partString = in.nextLine();
-
                 // System.out.println(t + "       t");
                 String[] broken = partString.split(",");
                 //adds a bike part to the addList
@@ -93,24 +90,32 @@ public class SalesAssociate extends Employee {
                         Integer.parseInt(broken[1]),
                         Double.parseDouble(broken[2]), Double.parseDouble(broken[3]),
                         Boolean.parseBoolean(broken[4]), Integer.parseInt(broken[5])).toString()));
-                System.out.println(partString + "This is tester in SAsc LoadFile");
+              //  System.out.println(partString + "This is tester in SAsc LoadFile");
             }
 
             for (int i = 0; i < addList.size(); i++) {
                 writer.println(addList.get(i));
             }
             writer.close();
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (FileNotFoundException e) {
+            System.out.println("File Not Found. Please make sure you are using the correct file");
         }
 
 
     }
 
     private PrintWriter writer;
-    private PrintWriter invoice;
-    private Invoice thisInvoice=null;
+    private Invoice thisInvoice;
 
+    /**
+     * creates a sales associate and their invoice
+     * @param fName first name of sa
+     * @param lName last name
+     * @param uName username
+     * @param Pword password
+     * @param Email email
+     * @throws Exception throws file not found and ioexceptions when they happen
+     */
     public SalesAssociate(String fName, String lName, String uName, String Pword, String Email) throws Exception {
         super(fName, lName, uName, Pword, Email);
         try {
@@ -124,7 +129,7 @@ public class SalesAssociate extends Employee {
     }
 
     /**
-     * Main method, for testing
+     * Main method, for testing, replaced by SalesAsscTester
      */
     public static void main(String[] args) throws Exception {
         SalesAssociate andy = new SalesAssociate("andy", "b", "c", "d", "email");
