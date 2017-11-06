@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane fx:id="logOut" prefHeight="400.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proj3.FXMLDocumentController">
+<AnchorPane fx:id="logOut" prefHeight="400.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project3GitDoneRight.FXMLDocumentController">
    <children>
       <TextField fx:id="UsernameCreate" layoutX="26.0" layoutY="31.0" promptText="Username" />
       <TextField fx:id="LastNameCrate" layoutX="26.0" layoutY="103.0" promptText="Last Name" />
