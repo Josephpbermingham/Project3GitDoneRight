@@ -112,8 +112,8 @@ public class WarehouseManager extends Employee {
     }
 
     /**
+     * @author Joseph Bermingham
      * moveToList is a private utility method that adds all of the parts in the warehouse to an arraylist and returns it
-     *
      * @return An array list containing all of the parts in the warehouse
      */
     private ArrayList<BikePart> moveToList() {
@@ -127,7 +127,7 @@ public class WarehouseManager extends Employee {
         }
         try {
             while (whlooker.hasNext()) {
-                String partString = in.nextLine();
+                String partString = whlooker.nextLine();//todo check to make sure that this doesnt need to be in.nextline();
 
                 // System.out.println(t + "       t");
                 String[] broken = partString.split(",");
