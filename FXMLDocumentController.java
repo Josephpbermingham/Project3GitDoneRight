@@ -1,4 +1,5 @@
 package Project3GitDoneRight;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,6 +77,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * This is the handler for the sales associate sell function
+     *
      * @param event the button click
      * @throws Exception any number of exceptions could be thrown here
      */
@@ -86,19 +88,18 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(steve.getFirstName());
         if ((PartName.getText().isEmpty())) {
             steve.Sell("", Integer.parseInt(PartNumber.getText()), Integer.parseInt(Quantity.getText()));
-        }else if((PartNumber.getText().isEmpty())){
+        } else if ((PartNumber.getText().isEmpty())) {
             steve.Sell(PartName.getText(), -1, Integer.parseInt(Quantity.getText()));
-        }
-        else if(!(PartNumber.getText().isEmpty()&&PartName.getText().isEmpty())){
+        } else if (!(PartNumber.getText().isEmpty() && PartName.getText().isEmpty())) {
             steve.Sell(PartName.getText(), Integer.parseInt(PartNumber.getText()), Integer.parseInt(Quantity.getText()));
-        }
-        else{
+        } else {
             display.appendText("Please put in either a name or a number");
         }
     }
 
     /**
      * This is the handler for the sales associate adding something to their van
+     *
      * @param event the button being clicked
      */
     @FXML
@@ -109,6 +110,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * This is the handler for the print invoive command. it only needs to call invoice.close on the Sales associate you want an invoice from
+     *
      * @param event on button press
      */
     @FXML
@@ -121,6 +123,7 @@ public class FXMLDocumentController implements Initializable {
      * This is how the fxml changes scenes. (Needs better description
      */
     private ArrayList<BikePart> bpDS = new ArrayList<>();
+
     @FXML
     private void changeScene(ActionEvent event) throws IOException {
         Stage stage = null;
@@ -134,16 +137,21 @@ public class FXMLDocumentController implements Initializable {
             System.out.println("Error");
         }
         //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+        try {
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch(NullPointerException e){
+            System.out.println("Null pointer exception in line 145 of controller");
+        }
+        }
 
     /**
      * THis is the action that occurs when you click the logon button
+     *
      * @param event the click
-     * @throws IOException
-     * //todo give it the ability to look through a list of logged on individuals to check for a valid user
+     * @throws IOException //todo give it the ability to look through a list of logged on individuals to check for a valid user
+     * @author Josh Butler
      */
     @FXML
     private void loginButton(ActionEvent event) throws IOException {
@@ -159,22 +167,25 @@ public class FXMLDocumentController implements Initializable {
             stage = (Stage) Login.getScene().getWindow();
             //load up OTHER FXML document
             root = FXMLLoader.load(getClass().getResource("SalesAssociate.fxml"));
-        }
-        else if(event.getSource() == Login && Username.getText().equals("d") && Password.getText().equals("d")){
+        } else if (event.getSource() == Login && Username.getText().equals("d") && Password.getText().equals("d")) {
             stage = (Stage) Login.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("SysAdmin.fxml"));
         } else
             System.out.print("Error loading fxml");
         //create a new scene with root and set the stage
         //todo make sure that we check for a scene before we try and load it to prevent a nullpointer exception
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+       try {
+           Scene scene = new Scene(root);
+           stage.setScene(scene);
+           stage.show();
+       }catch(NullPointerException e){
+           System.out.println("no user by that name found");
+       }
+       }
 
     /**
-     * @author Zach Canton
      * @param event the button is clicked
+     * @author Zach Canton
      */
     @FXML
     void createAccountButton(ActionEvent event) {
@@ -191,24 +202,36 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * This should be the button that delets an accoutn that you add
-     * @author zach caton
+     * This should be the button that delets an account that you have already added
+     *
      * @param event when the button is clicked
+     * @author zach caton
      */
     @FXML
-    void deleteAccountButton(ActionEvent event){
+    void deleteAccountButton(ActionEvent event) {
         String usernameDelete = deleteUserTextField.getText();
         SysAdmin delAdmin = new SysAdmin();
         delAdmin.deleteUser(usernameDelete);
     }
 
+    /**
+     * Changes the password of a user
+     *
+     * @param event The button is pressed
+     * @author zach caton
+     */
     @FXML
-    void resetPasswordButton(ActionEvent event) throws FileNotFoundException{
+    void resetPasswordButton(ActionEvent event) {
         String usernameReset = resetUserTextField.getText();
         String passwordReset = resetPasswordTextField.getText();
         SysAdmin resAdmin = new SysAdmin();
-        resAdmin.resetPassword(usernameReset, passwordReset);
+        try {
+            resAdmin.resetPassword(usernameReset, passwordReset);
+        } catch (FileNotFoundException e) {
+            System.out.println("File Not found Please Consult THe author");
+        }
     }
+
     /**
      * findByName compares all BikeParts in the warehouse data set and returns a BikePart if its name is equal to the name given.
      *
@@ -228,7 +251,7 @@ public class FXMLDocumentController implements Initializable {
      *
      * @param event on button press
      * @throws FileNotFoundException not sure why alll of the methods throw some thing
-     * @throws IOException i want to talk about why we do this. i can see it as really smart or not at all smart
+     * @throws IOException           i want to talk about why we do this. i can see it as really smart or not at all smart
      */
     @FXML
     private void testBPDS(ActionEvent event) throws IOException {
@@ -280,8 +303,8 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * this method goes through the bike part warehouse and looks for parts with less than a hardcoded quantity (10)
-     * @param event
-     * //todo addInv the ability to create a file of the needed parts
+     *
+     * @param event //todo addInv the ability to create a file of the needed parts
      */
     @FXML
     public void checkQuant(ActionEvent event) {
@@ -296,6 +319,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * exits the program on click
+     *
      * @param event on button press
      */
     @FXML
