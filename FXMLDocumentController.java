@@ -250,7 +250,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO i dont know what this needs to do
+        // TODO i don't know what this needs to do
     }
 
 }

@@ -14,7 +14,6 @@ public class SalesAsscTester {
     }
 
     private static void sellstuff() {
-        // todo look at the sell and invoicing methods
         bob.Sell("", 1, 10);
         bob.Sell("AAA_FIRST", -1, 1);
         bob.Sell("10spFrontDerailuer",-1,2);
