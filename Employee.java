@@ -1,3 +1,4 @@
+package Project3GitDoneRight;
 public class Employee {
     private String firstName;
     private String lastName;
