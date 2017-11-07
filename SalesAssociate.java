@@ -14,7 +14,7 @@ public class SalesAssociate extends Employee {
      * Should update the van, and addInv to a file that is already created with todays date
      */
     //todo make Sell work with files?
-    void Sell(String partName, int partNumber, int quantity) {
+   public void Sell(String partName, int partNumber, int quantity) {
         double cost = 0.0;
         this.moveToList();
             /*
@@ -69,7 +69,7 @@ public class SalesAssociate extends Employee {
      * when you enter this method it gets the text from the text field and Adds the contents of a file to addInv to this sales associate van
      */
 
-     void LoadFile(String fileName) {
+   public  void LoadFile(String fileName) {
         File loadFile = new File(fileName);
         try {
             //  System.out.println("Try has been entered");
@@ -162,7 +162,7 @@ public class SalesAssociate extends Employee {
     /*
      * this is a tester method for invoice
      */
-     ArrayList<Object> closeinvoice(String name) {
+     public ArrayList<Object> closeinvoice(String name) {
        return thisInvoice.close(name);
     }
 
@@ -176,7 +176,7 @@ public class SalesAssociate extends Employee {
      * creates a sales associate and their invoice
      * pretty sure that the writer in here needs to not append
      */
-     SalesAssociate(String fName, String lName, String uName, String Pword, String Email) {
+     public SalesAssociate(String fName, String lName, String uName, String Pword, String Email) {
         super(fName, lName, uName, Pword, Email);
         Invoice thisInvoice = new Invoice(fName);
     }
