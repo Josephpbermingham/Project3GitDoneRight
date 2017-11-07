@@ -1,0 +1,53 @@
+package Project3GitDoneRight;
+
+public class Employee {
+    private String firstName;
+    private String lastName;
+    private String username;
+    private String password;
+    private String email;
+
+
+    String getFirstName() {
+        return firstName;
+    }
+
+    String getLastName() {
+        return lastName;
+    }
+
+    String getUsername() {
+        return username;
+    }
+
+    String getPassword(boolean a) {
+        if (a)
+            return password;
+        else
+            return "";
+    }
+
+    String getEmail() {
+        return email;
+    }
+
+    void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Employee(String fName, String lName, String uName, String Pword, String Email) {
+        this.firstName = fName;
+        this.lastName = lName;
+        this.username = uName;
+        this.password = Pword;
+        this.email = Email;
+    }
+
+    public Employee() {
+        this.firstName = "John";
+        this.lastName = "doe";
+        this.username = "SysAdmin";
+        this.password = "A";
+        this.email = "J@J.com";
+    }
+}
