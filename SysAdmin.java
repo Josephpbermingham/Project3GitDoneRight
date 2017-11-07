@@ -15,7 +15,7 @@ class SysAdmin extends Employee {
     private ArrayList<Employee> users = new ArrayList<>();
     private String fileName = "users.txt";
     //This must already exist or it creates null pointer exceptions
-    private File f = new File("users.txt");//todo discuss what this is and if my change to it breaks your code
+    private File f = new File("users.txt");//This is the file that lists users
 
     SysAdmin() {
         super("a", "b", "d", "d", "e");
