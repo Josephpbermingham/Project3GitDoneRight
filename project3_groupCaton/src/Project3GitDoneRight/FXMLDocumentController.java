@@ -53,6 +53,11 @@ public class FXMLDocumentController implements Initializable {
     private Button createAccountButton;
     @FXML
     private TextField userTypeTextField;
+    
+    
+    @FXML
+    private TextField lastNameTextField;
+    
     @FXML
     private TextField passwordTextField;
     @FXML
@@ -190,11 +195,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     void createAccountButton(ActionEvent event) {
         SysAdmin sysAdmin = new SysAdmin();
-        String firstName = "";
-        String lastName = "";
+        String firstName = userTypeTextField.getText();
+        String lastName = lastNameTextField.getText();
         String username = usernameTextField.getText(); //tells use the type of employee someone is
         String pass = passwordTextField.getText();
-        //String userType = userTypeTextField.getText();
         String email = emailTextField.getText();
         String phoneNum = phoneNumberTextField.getText();
 
