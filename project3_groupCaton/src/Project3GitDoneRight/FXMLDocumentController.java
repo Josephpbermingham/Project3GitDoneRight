@@ -84,7 +84,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     void Sell(ActionEvent event) throws Exception {
-        steve = new SalesAssociate("a", "b", "c", "d", "email", "phoneNumber");
+        steve = new SalesAssociate("aa", "a", "b", "c", "d", "email", "phoneNumber");
         //steve.Sell();
         System.out.println(steve.getFirstName());
         if ((PartName.getText().isEmpty())) {
@@ -107,7 +107,7 @@ public class FXMLDocumentController implements Initializable {
     void LoadFIle(ActionEvent event) {
 
         //todo create a salse associate such that i can access the correct one in this method
-        SalesAssociate hardcoded = new SalesAssociate("default", "error", "error", "ShouldntBeUsingThis", "really now. please stop", "sopme phone number");
+        SalesAssociate hardcoded = new SalesAssociate("default", "error","error", "error", "ShouldntBeUsingThis", "really now. please stop", "sopme phone number");
     }
 
     /**
@@ -197,12 +197,13 @@ public class FXMLDocumentController implements Initializable {
         SysAdmin sysAdmin = new SysAdmin();
         String firstName = userTypeTextField.getText();
         String lastName = lastNameTextField.getText();
-        String username = usernameTextField.getText(); //tells use the type of employee someone is
+        String userType = usernameTextField.getText();
+        String username =  lastNameTextField.getText() + usernameTextField.getText(); //tells use the type of employee someone is
         String pass = passwordTextField.getText();
         String email = emailTextField.getText();
         String phoneNum = phoneNumberTextField.getText();
 
-        sysAdmin.addUser(firstName, lastName, username, pass, email, phoneNum);
+        sysAdmin.addUser(firstName, lastName, userType, username, pass, email, phoneNum);
 
         //String firstName, String lstName, String userName, String Password, String Email, String phonenum
     }

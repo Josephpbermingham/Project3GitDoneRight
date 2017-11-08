@@ -20,7 +20,7 @@ class SysAdmin extends Employee {
     
     
     SysAdmin() {
-        super("a", "b", "d", "d", "e", "f");
+        super("a", "b", "d", "d", "e", "f", "g");
     }
     
     public Employee findByName(String name){
@@ -42,17 +42,18 @@ class SysAdmin extends Employee {
      * @param email       this users email
      * @param pNumber     the phone number of this user
      */
-    public void addUser(String fName, String lName, String userName, String password, String email, String pNumber) {
+    public void addUser(String fName, String lName, String userType, String userName, String password, String email, String pNumber) {
         
         //creating an employee from text fields
         String[] user = new String[6];
         user[0] = fName;
         user[1] = lName;
-        user[2] = userName;
-        user[3] = password;
-        user[4] = email;
-        user[5] = pNumber;
-        Employee em = new Employee(user[0], user[1], user[2], user[3], user[4], user[5]);
+        user[2] = userType;
+        user[3] = userName;
+        user[4] = password;
+        user[5] = email;
+        user[6] = pNumber;
+        Employee em = new Employee(user[0], user[1], user[2], user[3], user[4], user[5], user[6]);
         
         boolean firstTime = true;
         
@@ -82,7 +83,7 @@ class SysAdmin extends Employee {
                 while (inVF.hasNext()) {
                     String line = inVF.nextLine();
                     String[] pA = line.split(",");
-                    Employee ba = new Employee(pA[0], pA[1], pA[2], pA[3], pA[4], pA[5]);
+                    Employee ba = new Employee(pA[0], pA[1], pA[2], pA[3], pA[4], pA[5], pA[6]);
                     users.add(ba);
                 }
             }
@@ -130,7 +131,7 @@ class SysAdmin extends Employee {
             while (inVF.hasNext()) {
                 String line = inVF.nextLine();
                 String[] pA = line.split(",");
-                Employee ba = new Employee(pA[0], pA[1], pA[2], pA[3], pA[4], pA[5]);
+                Employee ba = new Employee(pA[0], pA[1], pA[2], pA[3], pA[4], pA[5], pA[6]);
                 users.add(ba);
             }
             for (int i = 0; i < users.size(); i++) {

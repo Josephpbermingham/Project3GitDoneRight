@@ -3,6 +3,7 @@ package Project3GitDoneRight;
 public class Employee {
     private String firstName;
     private String lastName;
+    private String userType;
     private String username;
     private String phoneNumber;
     private String password;
@@ -40,9 +41,10 @@ public class Employee {
         this.password = password;
     }
 
-    public Employee(String fName, String lName, String uName, String Pword, String Email, String pNumber) {
+    public Employee(String fName, String lName, String uType, String uName, String Pword, String Email, String pNumber) {
         this.firstName = fName;
         this.lastName = lName;
+        this.userType = uType;
         this.username = uName;
         this.password = Pword;
         this.email = Email;

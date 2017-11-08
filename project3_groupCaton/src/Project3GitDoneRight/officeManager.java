@@ -1,6 +1,6 @@
 package Project3GitDoneRight;
 public class officeManager extends Employee {
-    public officeManager(String a, String b, String c, String d, String e, String f) {
-        super(a, b, c, d, e, f);
+    public officeManager(String aa, String a, String b, String c, String d, String e, String f) {
+        super(aa, a, b, c, d, e, f);
     }
 }

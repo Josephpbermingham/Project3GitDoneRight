@@ -11,8 +11,8 @@ public class WarehouseManager extends Employee {
     private PrintWriter writer;
     private Scanner in = null;
 
-    public WarehouseManager(String a, String b, String c, String d, String e, String f) {
-        super(a, b, c, d, e, f);
+    public WarehouseManager(String aa, String a, String b, String c, String d, String e, String f) {
+        super(aa,a, b, c, d, e, f);
         try {
             writer = new PrintWriter(new FileWriter(warehousedb, true));//Might need to be false
         } catch (java.io.IOException g) {
