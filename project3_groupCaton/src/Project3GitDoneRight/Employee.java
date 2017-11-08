@@ -10,6 +10,10 @@ public class Employee {
     private String email;
 
 
+    String getUserType(){
+        return userType;
+    }
+    
     String getPhoneNumber(){
         return phoneNumber;
     }
