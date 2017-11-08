@@ -57,6 +57,12 @@ public class Employee {
         this.email = "J@J.com";
         this.phoneNumber = "867-867-5309";
     }
+    
+    @Override
+    public String toString(){
+        return firstName + "," + lastName + "," + username+ "," + password + "," + email + "," + phoneNumber;
+    }
+    
 }
 
 
