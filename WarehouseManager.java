@@ -95,7 +95,7 @@ public class WarehouseManager extends Employee {
     }
 
     /**
-     * finds a part in the warehouse by name
+     * finds a part in the warehouse by number
      *
      * @param number the id of the part you are looking for
      */

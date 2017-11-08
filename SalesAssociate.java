@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SalesAssociate extends Employee {
+public class    SalesAssociate extends Employee {
     private ArrayList<BikePart> van = new ArrayList<>();
     private Invoice thisInvoice = new Invoice(super.getFirstName());
 
