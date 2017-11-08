@@ -10,8 +10,8 @@ public class SalesAsscTester{
     public static void main(String[] args) {
 
         bob = new SalesAssociate("Bob", "Brinkle", "bbrinkle", "t", "email");
+        addstuff();
         sellstuff();
-        //addstuff();
         invoicing();
     }
 
@@ -27,8 +27,6 @@ public class SalesAsscTester{
         bob.LoadFile("initialInv.txt");
     }
     private static void invoicing(){
-        ArrayList<Object> a = bob.closeinvoice("marko");
-
-        System.out.println(a.get(0).toString());
+        Object a = bob.closeInvoice("marko");
     }
 }

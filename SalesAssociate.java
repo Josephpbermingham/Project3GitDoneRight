@@ -14,7 +14,8 @@ public class    SalesAssociate extends Employee {
      * Should update the van, and addInv to a file that is already created with todays date
      */
     //todo make Sell work with files?
-   public void Sell(String partName, int partNumber, int quantity) {
+    //todo make it return a happy string with the thing it sells
+   public String Sell(String partName, int partNumber, int quantity) {
         double cost = 0.0;
         this.moveToList();
             /*
@@ -62,6 +63,7 @@ public class    SalesAssociate extends Employee {
         //    System.out.println(thisInvoice.getCost() + "the invoices total cost at the end of sell");
         //  System.out.println(van.get(0).toString() + " van sub 0");
         writeToFile(van);
+        return"this worked, or it didnt, Joseph has yet to implement this feature";
     }
 
     /**
@@ -161,8 +163,9 @@ public class    SalesAssociate extends Employee {
 
     /*
      * this is a tester method for invoice
+     * todo add a string return instead of a wierd other thing
      */
-     public ArrayList<Object> closeinvoice(String name) {
+     public Object closeInvoice(String name) {
        return thisInvoice.close(name);
     }
 
