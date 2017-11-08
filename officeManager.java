@@ -38,15 +38,18 @@ public class officeManager extends Employee {
                 System.out.println("Quantity of " + bp.getName() + " is " + bp.getQuantity() + "," + " order at least 20 now." + "\n");
             }
     }
-    
-        public void examineButtonMethodname(String partname, ArrayList<BikePart> bpDS) {
+    // todo add methods for by partname and quantity
+        public String examineButtonMethodname(String partname, ArrayList<BikePart> bpDS) {
         for (BikePart bp : bpDS)
             if (bp.getName().equals(partname)) {
                 if (bp.getonSale())
-                    System.out.println("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getSale() + "," + " Quantity: " + bp.getQuantity() + "\n");
+                    return
+                            ("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getSale() + "," + " Quantity: " + bp.getQuantity() + "\n");
                 else
-                    System.out.println("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getPrice() + "," + " Quantity: " + bp.getQuantity() + "\n");
+                    return
+                            ("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getPrice() + "," + " Quantity: " + bp.getQuantity() + "\n");
             }
+        return("");
     }
         
         private void testBPDS(ActionEvent event) throws IOException {
