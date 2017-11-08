@@ -290,7 +290,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void examineButtonMethod(ActionEvent event) {
         officeManager om = new officeManager("a", "b", "c", "d", "email");
-        om.examineButtonMethodname(partInfo.getText(), bpDS);
+        display.appendText((om.examineButtonMethodname(partInfo.getText(), bpDS)));
     }
     
     
