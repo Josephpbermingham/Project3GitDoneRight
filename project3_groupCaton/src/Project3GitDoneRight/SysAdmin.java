@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author zachcaton
  */
 class SysAdmin extends Employee {
-
+    //String firstName, String lstName, String userName, String Password, String Email, String phonenum
 
     private ArrayList<Employee> users = new ArrayList<>();
     private String fileName = "users.txt";
@@ -18,28 +18,30 @@ class SysAdmin extends Employee {
     private File f = new File("users.txt");//This is the file that lists users
 
     SysAdmin() {
-        super("a", "b", "d", "d", "e");
+        super("a", "b", "d", "d", "e", "f");
     }
 
     /**
      * Adds user to user database (text file)
      *
-     * @param userType    what type of user this user is
-     * @param phoneNumber the pnone nubmer of this user
+     * @param fName       First name for the user
+     * @param lName       Last name for the user
+     * @param userName    what type of user this user is
+     * @param password    this is users uncrypted password
      * @param email       this users email
-     * @param userName    this users username
-     * @param password    this users unencrypted password
+     * @param pNumber     the phone number of this user
      */
-    void addUser(String userType, String phoneNumber, String email, String userName, String password) {
+    void addUser(String fName, String lName, String userName, String password, String email, String pNumber) {
 
         //creating an employee from text fields
         String[] user = new String[5];
-        user[0] = userType;
-        user[1] = phoneNumber;
-        user[2] = email;
-        user[3] = userName;
-        user[4] = password;
-        Employee em = new Employee(user[0], user[1], user[2], user[3], user[4]);
+        user[0] = fName;
+        user[1] = lName;
+        user[2] = userName;
+        user[3] = password;
+        user[4] = email;
+        user[5] = pNumber;
+        Employee em = new Employee(user[0], user[1], user[2], user[3], user[4], user[5]);
 
         //checks to see if users is empty, if it is then it will read in users from the file
         Scanner inVF = null;
@@ -54,7 +56,7 @@ class SysAdmin extends Employee {
                 while (inVF.hasNext()) {
                     String line = inVF.nextLine();
                     String[] pA = line.split(",");
-                    Employee ba = new Employee(pA[0], pA[1], pA[2], pA[3], pA[4]);
+                    Employee ba = new Employee(pA[0], pA[1], pA[2], pA[3], pA[4], pA[5]);
                     users.add(ba);
                 }
             }
@@ -106,7 +108,7 @@ class SysAdmin extends Employee {
             while (inVF.hasNext()) {
                 String line = inVF.nextLine();
                 String[] pA = line.split(",");
-                Employee ba = new Employee(pA[0], pA[1], pA[2], pA[3], pA[4]);
+                Employee ba = new Employee(pA[0], pA[1], pA[2], pA[3], pA[4], pA[5]);
                 users.add(ba);
             }
             for (int i = 0; i < users.size(); i++) {

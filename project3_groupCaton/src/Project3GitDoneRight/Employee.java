@@ -4,10 +4,15 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String username;
+    private String phoneNumber;
     private String password;
     private String email;
 
 
+    String getPhoneNumber(){
+        return phoneNumber;
+    }
+    
     String getFirstName() {
         return firstName;
     }
@@ -35,12 +40,13 @@ public class Employee {
         this.password = password;
     }
 
-    public Employee(String fName, String lName, String uName, String Pword, String Email) {
+    public Employee(String fName, String lName, String uName, String Pword, String Email, String pNumber) {
         this.firstName = fName;
         this.lastName = lName;
         this.username = uName;
         this.password = Pword;
         this.email = Email;
+        this.phoneNumber = pNumber;
     }
 
     public Employee() {
@@ -49,5 +55,6 @@ public class Employee {
         this.username = "SysAdmin";
         this.password = "A";
         this.email = "J@J.com";
+        this.phoneNumber = "867-867-5309";
     }
 }
