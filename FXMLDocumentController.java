@@ -155,14 +155,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void loginButton(ActionEvent event) throws IOException {
         Stage stage = null;
-        Parent root = null;
+        Parent root = null; 
         //todo make this actually look through a list of users. needs to be System admin compliant
         //todo have these actually create a user and set the employee field to themselves so we can access it
         if (event.getSource() == Login && Username.getText().equals("officeman") && Password.getText().equals("pass")) {
             //get reference to the button's stage
             stage = (Stage) Login.getScene().getWindow();
             //load up OTHER FXML document
-            root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+            root = FXMLLoader.load(getClass().getResource("OfficeManager.fxml"));
         } else if (event.getSource() == Login && Username.getText().equals("sm") && Password.getText().equals("p")) {
             stage = (Stage) Login.getScene().getWindow();
             //load up OTHER FXML document
@@ -289,17 +289,11 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void examineButtonMethod(ActionEvent event) {
-        String s = partInfo.getText();
-
-        for (BikePart bp : bpDS)
-            if (bp.getName().equals(s)) {
-                if (bp.getonSale())
-                    display.appendText("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getSale() + "," + " Quantity: " + bp.getQuantity() + "\n");
-                else
-                    display.appendText("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getPrice() + "," + " Quantity: " + bp.getQuantity() + "\n");
-            }
+        officeManager om = new officeManager("a", "b", "c", "d", "email");
+        om.examineButtonMethodname(partInfo.getText(), bpDS);
     }
-
+    
+    
     /**
      * @author Josh Butler
      * this method goes through the bike part warehouse and looks for parts with less than a hardcoded quantity (10)
@@ -307,7 +301,8 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void checkQuant(ActionEvent event) {
-
+        officeManager om = new officeManager("a", "b", "c", "d", "email");
+        
         for (BikePart bp : bpDS)
             if (bp.getQuantity() <= 10 && bp.getQuantity() > 5) {
                 display.appendText("Quantity of " + bp.getName() + " is " + bp.getQuantity() + "," + " order more." + "\n");
@@ -325,9 +320,9 @@ public class FXMLDocumentController implements Initializable {
     public void Quit(ActionEvent event) {
         System.exit(1);
     }
-//todo not sure what this does
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO i don't know what this needs to do
+//Overrides abstract method initialize(URL,ResourceBundle) in Initializable
+//necessary for the execution of the program
+    @Override 
+    public void initialize(URL url, ResourceBundle rb) {       
     }
 }
