@@ -10,11 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import javafx.scene.control.PasswordField;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 
 /**
  * @author Josh
@@ -28,11 +29,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField Username;
     @FXML
-    private TextField Password;
+    private PasswordField Password;
     @FXML
     private TextArea display;
-    @FXML
-    private Button changescene;
     @FXML
     private Button Login;
     @FXML
