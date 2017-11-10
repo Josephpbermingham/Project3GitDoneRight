@@ -51,8 +51,32 @@ public class officeManager extends Employee {
             }
         return("");
     }
-        
-        private void testBPDS(ActionEvent event) throws IOException {
+        public String examineButtonMethodNum(int num, ArrayList<BikePart> bpDS) {
+        for (BikePart bp : bpDS)
+            if (bp.getNumber()==num) {
+                if (bp.getonSale())
+                    return
+                            ("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getSale() + "," + " Quantity: " + bp.getQuantity() + "\n");
+                else
+                    return
+                            ("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getPrice() + "," + " Quantity: " + bp.getQuantity() + "\n");
+            }
+        return("");
+    }
+        public String examineButtonMethodQuant(int quant, ArrayList<BikePart> bpDS) {
+        for (BikePart bp : bpDS)
+            if (bp.getQuantity()==quant) {
+                if (bp.getonSale())
+                    return
+                            ("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getSale() + "," + " Quantity: " + bp.getQuantity() + "\n");
+                else
+                    return
+                            ("Part Name: " + bp.getName() + "," + " Current Price: $" + bp.getPrice() + "," + " Quantity: " + bp.getQuantity() + "\n");
+            }
+        return("");
+    }
+  /*      
+        private void testBPDS(ActionEvent event) throws IOException { //change so that it takes string file 
         String s = "test.txt";
         File f = new File(s);
         try (BufferedReader reader = new BufferedReader(new FileReader(f))) { //reads the file given by the user in the first textfield
@@ -79,6 +103,6 @@ public class officeManager extends Employee {
             }
         }
     }
-    
+ */   
     
 }
