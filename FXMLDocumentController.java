@@ -16,7 +16,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.RadioButton;
 
 
 /**
@@ -154,7 +153,6 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * THis is the action that occurs when you click the logon button
-     *
      * @param event the click
      * @throws IOException When there is an io exception
      * @author Josh Butler
@@ -242,7 +240,6 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * findByName compares all BikeParts in the warehouse data set and returns a BikePart if its name is equal to the name given.
-     *
      * @param name The name of the part you are trying to find
      * @return returns BikePart b
      */
@@ -257,11 +254,9 @@ public class FXMLDocumentController implements Initializable {
      * readBPDS reads in the initial warehouse data set from a file given by the user.
      * It also displays all BikeParts in the warehouse and denotes what each value is.
      * @param event on button press
-     * @throws FileNotFoundException not sure why alll of the methods throw some thing
-     * @throws IOException           i want to talk about why we do this. i can see it as really smart or not at all smart
      */
     @FXML
-    private void testBPDS(ActionEvent event) throws IOException {
+    private void testBPDS(ActionEvent event){
         String s = testbpDS.getText();
         File f = new File(s);
         try (BufferedReader reader = new BufferedReader(new FileReader(f))) { //reads the file given by the user in the first textfield
@@ -286,9 +281,14 @@ public class FXMLDocumentController implements Initializable {
                 }
                 display.appendText("Part Name: " + pa[0] + "," + " Part Number: " + result + "," + " Price: $" + result2 + "," + " Sales Price: $" + result3 + "," + " On Sale: " + result4 + "," + " Quantity: " + result5 + "\n");
             }
+        } catch (FileNotFoundException ex) {
+            display.appendText("File not found, try a different file"+"\n");
+            //Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            display.appendText("IO Exception"+"\n");
+            //Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     /**
      * @author Josh Butler
@@ -305,8 +305,7 @@ public class FXMLDocumentController implements Initializable {
         else
         display.appendText((om.examineButtonMethodname(partInfo.getText(), bpDS)));
     }
-    
-    
+       
     /**
      * @author Josh Butler
      * this method goes through the bike part warehouse and looks for parts with less than a hardcoded quantity (10)
