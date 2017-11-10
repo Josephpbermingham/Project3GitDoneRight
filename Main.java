@@ -1,5 +1,7 @@
 
 package Project3GitDoneRight;
+import java.io.File;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,8 +19,19 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    // .exist
+    //
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        
+        //trys to create file before program is running
+        File usersFile = new File("user.txt");
+        if(!usersFile.exists()){
+            //if the file does not exsist in project it will then create it
+            usersFile.createNewFile();
+            System.out.println("added file");
+        }
+        
         launch(args);
         System.out.println("hello josh");
     }
