@@ -15,6 +15,8 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
 
 
 /**
@@ -66,10 +68,17 @@ public class FXMLDocumentController implements Initializable {
     private TextField resetUserTextField;
     @FXML
     private TextField resetPasswordTextField;
+    @FXML
+     CheckBox nam;
+    @FXML
+    private CheckBox num;
+    @FXML
+    private CheckBox quant;
     //todo move methods to their respective classes. so that the controller isnt a giant monster of a class
     //This Employee is used to store the currently logged in employee
     private Employee usersName;//todo implement this so that we can reference individual employees from a list
     private ArrayList<BikePart> bpDS = new ArrayList<>();
+    
     /**
      * This is the handler for the sales associate sell function
      *
@@ -289,6 +298,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void examineButtonMethod(ActionEvent event) {
         officeManager om = new officeManager("a", "b", "c", "d", "email");
+        if(num.isSelected())
+        display.appendText((om.examineButtonMethodNum(Integer.parseInt((partInfo.getText())), bpDS)));
+        else if(quant.isSelected())
+        display.appendText((om.examineButtonMethodQuant(Integer.parseInt((partInfo.getText())), bpDS)));
+        else
         display.appendText((om.examineButtonMethodname(partInfo.getText(), bpDS)));
     }
     
