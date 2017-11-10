@@ -179,8 +179,8 @@ public class    SalesAssociate extends Employee {
      * creates a sales associate and their invoice
      * pretty sure that the writer in here needs to not append
      */
-     public SalesAssociate(String fName, String lName, String uName, String Pword, String Email) {
-        super(fName, lName, uName, Pword, Email);
+     public SalesAssociate(String fName, String lName, String uType, String uName, String Pword, String Email, String phoneNum) {
+        super(fName, lName, uName, uType, Pword, Email, phoneNum);
         Invoice thisInvoice = new Invoice(fName);
     }
 
@@ -189,7 +189,7 @@ public class    SalesAssociate extends Employee {
      */
 
     public static void main(String[] args) throws Exception {
-        SalesAssociate andy = new SalesAssociate("andy", "b", "c", "d", "email");
+        SalesAssociate andy = new SalesAssociate("andy", "b", "bb" , "c", "d", "email", "phonenumber");
         Invoice andyInoice = new Invoice("Andy");
         andy.LoadFile("test.txt");
         andy.Sell("ZZZ_APPEARS_LAST", -1, 2);

@@ -9,7 +9,7 @@ public class SalesAsscTester{
 
     public static void main(String[] args) {
 
-        bob = new SalesAssociate("Bob", "Brinkle", "bbrinkle", "t", "email");
+        bob = new SalesAssociate("Bob", "Brinkle", "manager", "bbrinkle", "t", "email", "867-867-5309");
         addstuff();
         sellstuff();
         invoicing();

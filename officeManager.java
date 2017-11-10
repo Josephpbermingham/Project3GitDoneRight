@@ -10,8 +10,8 @@ import javafx.event.ActionEvent;
 public class officeManager extends Employee {
     private static ArrayList<BikePart> bpDS = new ArrayList<>();
     
-    public officeManager(String a, String b, String c, String d, String e) {
-        super(a, b, c, d, e);
+    public officeManager(String a, String b, String bb, String c, String d, String e, String f) {
+        super(a, b, bb, c, d, e, f);
     }
     
      /**

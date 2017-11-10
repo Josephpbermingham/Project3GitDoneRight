@@ -49,10 +49,16 @@ public class FXMLDocumentController implements Initializable {
     private TextField Quantity;
     @FXML
     private Button logOut;
+    
+    
+    
+    
     @FXML
     private Button createAccountButton;
     @FXML
     private TextField userTypeTextField;
+    @FXML
+    private TextField lastNameTextField;
     @FXML
     private TextField passwordTextField;
     @FXML
@@ -67,6 +73,8 @@ public class FXMLDocumentController implements Initializable {
     private TextField resetUserTextField;
     @FXML
     private TextField resetPasswordTextField;
+    
+    
     @FXML
      CheckBox nam;
     @FXML
@@ -86,7 +94,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     void Sell(ActionEvent event) throws Exception {
-        steve = new SalesAssociate("a", "b", "c", "d", "email");
+        steve = new SalesAssociate("a", "b", "bb", "c", "d", "email", "phonenumber");
         //steve.Sell();
         System.out.println(steve.getFirstName());
         if ((PartName.getText().isEmpty())) {
@@ -109,7 +117,7 @@ public class FXMLDocumentController implements Initializable {
     void LoadFIle(ActionEvent event) {
 
         //todo create a salse associate such that i can access the correct one in this method
-        SalesAssociate hardcoded = new SalesAssociate("default", "error", "error", "ShouldntBeUsingThis", "really now. please stop");
+        SalesAssociate hardcoded = new SalesAssociate("default", "error", "error", "error", "ShouldntBeUsingThis", "really now. please stop", "password");
     }
 
     /**
@@ -188,22 +196,26 @@ public class FXMLDocumentController implements Initializable {
             System.out.println("no user by that name found");
         }
     }
-
+    private final SysAdmin sysAdmin = new SysAdmin();
     /**
      * @param event the button is clicked
      * @author Zach Canton
      */
     @FXML
     void createAccountButton(ActionEvent event) {
-        SysAdmin sysAdmin = new SysAdmin();
-        String userType = userTypeTextField.getText();
+        
+        
+        String firstName = userTypeTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String userType = usernameTextField.getText();
+        String username =  lastNameTextField.getText() + usernameTextField.getText(); //tells use the type of employee someone is
         String pass = passwordTextField.getText();
-        String username = usernameTextField.getText();
         String email = emailTextField.getText();
         String phoneNum = phoneNumberTextField.getText();
 
-        sysAdmin.addUser(userType, phoneNum, email, username, pass);
-
+        sysAdmin.addUser(firstName, lastName, userType, username, pass, email, phoneNum);
+        
+        
         //SysAdmin.addUser(userType, phoneNum, email, username, pass);
     }
 
@@ -216,8 +228,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     void deleteAccountButton(ActionEvent event) {
         String usernameDelete = deleteUserTextField.getText();
-        SysAdmin delAdmin = new SysAdmin();
-        delAdmin.deleteUser(usernameDelete);
+        //SysAdmin delAdmin = new SysAdmin();
+        sysAdmin.deleteUser(usernameDelete);
     }
 
     /**
@@ -230,9 +242,9 @@ public class FXMLDocumentController implements Initializable {
     void resetPasswordButton(ActionEvent event) {
         String usernameReset = resetUserTextField.getText();
         String passwordReset = resetPasswordTextField.getText();
-        SysAdmin resAdmin = new SysAdmin();
+        //SysAdmin resAdmin = new SysAdmin();
         try {
-            resAdmin.resetPassword(usernameReset, passwordReset);
+            sysAdmin.resetPassword(usernameReset, passwordReset);
         } catch (FileNotFoundException e) {
             System.out.println("File Not found Please Consult THe author");
         }
@@ -297,7 +309,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void examineButtonMethod(ActionEvent event) {
-        officeManager om = new officeManager("a", "b", "c", "d", "email");
+        officeManager om = new officeManager("a", "b", "bb", "c", "d", "email", "867-867-5309");
         if(num.isSelected())
         display.appendText((om.examineButtonMethodNum(Integer.parseInt((partInfo.getText())), bpDS)));
         else if(quant.isSelected())
@@ -313,7 +325,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void checkQuant(ActionEvent event) {
-        officeManager om = new officeManager("a", "b", "c", "d", "email");
+        officeManager om = new officeManager("a", "b", "bb", "c", "d", "email", "867-867-5309");
         
         for (BikePart bp : bpDS)
             if (bp.getQuantity() <= 10 && bp.getQuantity() > 5) {
