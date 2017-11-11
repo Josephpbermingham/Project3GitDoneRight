@@ -25,7 +25,7 @@ public class Main extends Application {
     public static void main(String[] args) throws IOException {
         
         //trys to create file before program is running
-        File usersFile = new File("user.txt");
+        File usersFile = new File("users.txt");
         if(!usersFile.exists()){
             //if the file does not exsist in project it will then create it
             usersFile.createNewFile();

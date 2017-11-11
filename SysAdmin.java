@@ -156,6 +156,7 @@ class SysAdmin extends Employee {
                 for (Employee usr : users) {
                     p.println(usr.toString());
                 }
+                p.close();
             } catch (FileNotFoundException e) {
                 System.out.println("File not found in SysAdmin Remove user");
             }
