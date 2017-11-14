@@ -1,5 +1,4 @@
-package Project3GitDoneRight;
-
+package project3GitDoneRight;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;

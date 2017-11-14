@@ -1,8 +1,4 @@
-package Project3GitDoneRight.Test;
-
-import Project3GitDoneRight.SalesAssociate;
-
-import java.util.ArrayList;
+package project3GitDoneRight;
 
 public class SalesAsscTester{
     private static SalesAssociate bob;

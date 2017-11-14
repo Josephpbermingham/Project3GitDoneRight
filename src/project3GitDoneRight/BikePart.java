@@ -3,7 +3,7 @@
  *
  * @author Josh
  */
-package Project3GitDoneRight;
+package project3GitDoneRight;
 public class BikePart {
     String partName;
     int partNumber;

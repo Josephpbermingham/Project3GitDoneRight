@@ -1,5 +1,4 @@
-package Project3GitDoneRight;
-
+package project3GitDoneRight;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
