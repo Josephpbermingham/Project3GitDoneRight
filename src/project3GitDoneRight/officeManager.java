@@ -1,4 +1,4 @@
-package Project3GitDoneRight;
+package project3GitDoneRight;
 
 import java.util.ArrayList;
 

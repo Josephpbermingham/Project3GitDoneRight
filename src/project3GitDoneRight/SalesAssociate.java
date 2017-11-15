@@ -164,8 +164,9 @@ public class    SalesAssociate extends Employee {
      * this is a tester method for invoice
      * todo add a string return instead of a wierd other thing
      */
-     public Object closeInvoice(String name) {
-       return thisInvoice.close(name);
+     public Invoice closeInvoice(String name) {
+        thisInvoice.close(name);
+         return thisInvoice;
     }
 
     /**
