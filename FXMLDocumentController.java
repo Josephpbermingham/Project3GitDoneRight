@@ -49,10 +49,6 @@ public class FXMLDocumentController implements Initializable {
     private TextField Quantity;
     @FXML
     private Button logOut;
-    
-    
-    
-    
     @FXML
     private Button createAccountButton;
     @FXML
@@ -73,10 +69,8 @@ public class FXMLDocumentController implements Initializable {
     private TextField resetUserTextField;
     @FXML
     private TextField resetPasswordTextField;
-    
-    
     @FXML
-     CheckBox nam;
+    CheckBox nam;
     @FXML
     private CheckBox num;
     @FXML
@@ -311,11 +305,11 @@ public class FXMLDocumentController implements Initializable {
     public void examineButtonMethod(ActionEvent event) {
         officeManager om = new officeManager("a", "b", "bb", "c", "d", "email", "867-867-5309");
         if(num.isSelected())
-        display.appendText((om.examineButtonMethodNum(Integer.parseInt((partInfo.getText())), bpDS)));
+            display.appendText((om.examineButtonMethodNum(Integer.parseInt((partInfo.getText())), bpDS)));
         else if(quant.isSelected())
-        display.appendText((om.examineButtonMethodQuant(Integer.parseInt((partInfo.getText())), bpDS)));
+            display.appendText((om.examineButtonMethodQuant(Integer.parseInt((partInfo.getText())), bpDS)));
         else
-        display.appendText((om.examineButtonMethodname(partInfo.getText(), bpDS)));
+            display.appendText((om.examineButtonMethodname(partInfo.getText(), bpDS)));
     }
        
     /**
@@ -325,14 +319,23 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     public void checkQuant(ActionEvent event) {
-        officeManager om = new officeManager("a", "b", "bb", "c", "d", "email", "867-867-5309");
-        
+        officeManager om = new officeManager("a", "b", "bb", "c", "d", "email", "867-867-5309");        
         for (BikePart bp : bpDS)
             if (bp.getQuantity() <= 10 && bp.getQuantity() > 5) {
                 display.appendText("Quantity of " + bp.getName() + " is " + bp.getQuantity() + "," + " order more." + "\n");
             } else if (bp.getQuantity() <= 5) {
                 display.appendText("Quantity of " + bp.getName() + " is " + bp.getQuantity() + "," + " order at least 20 now." + "\n");
             }
+    }
+    /**
+     * @author Josh Butler
+     * generates commission given invoice(and will print to a file for saving commissions)
+     * @param inv
+     */
+    @FXML
+    public void generateCommission(Invoice inv){  //may change param to a file in which invoice is printed
+        //get variables from invoice and use associate + (sales*.15) to print commissions
+        
     }
 
     /**
